@@ -46,19 +46,13 @@ class Ui_Form(object):
         self.text_3 = QLabel(self.verticalLayoutWidget)
         self.text_3.setObjectName(u"text_3")
         self.text_3.setAlignment(Qt.AlignCenter)
-
         self.verticalLayout.addWidget(self.text_3)
-
         self.button_3 = QPushButton(self.verticalLayoutWidget)
         self.button_3.setObjectName(u"button_3")
-
         self.verticalLayout.addWidget(self.button_3)
-
         self.button2_3 = QPushButton(self.verticalLayoutWidget)
         self.button2_3.setObjectName(u"button2_3")
-
         self.verticalLayout.addWidget(self.button2_3)
-
         self.tabWidget.addTab(self.tab_1, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
@@ -72,80 +66,54 @@ class Ui_Form(object):
         self.title.setObjectName(u"title")
         self.title.setMinimumSize(QSize(0, 27))
         self.title.setAlignment(Qt.AlignCenter)
-
         self.verticalLayout_2.addWidget(self.title)
-
         self.counter = QLabel(self.verticalLayoutWidget_2)
         self.counter.setObjectName(u"counter")
         self.counter.setMaximumSize(QSize(16777215, 27))
         self.counter.setAlignment(Qt.AlignCenter)
-
         self.verticalLayout_2.addWidget(self.counter)
-
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.label = QLabel(self.verticalLayoutWidget_2)
         self.label.setObjectName(u"label")
         self.label.setMaximumSize(QSize(45, 16777215))
         self.label.setAlignment(Qt.AlignCenter)
-
         self.horizontalLayout.addWidget(self.label)
-
         self.hour_spinBox = QSpinBox(self.verticalLayoutWidget_2)
         self.hour_spinBox.setObjectName(u"hour_spinBox")
         self.hour_spinBox.setMaximumSize(QSize(57, 16777215))
         self.hour_spinBox.setRange(0, 24)
-
         self.horizontalLayout.addWidget(self.hour_spinBox)
-
         self.label_2 = QLabel(self.verticalLayoutWidget_2)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setMaximumSize(QSize(45, 16777215))
         self.label_2.setAlignment(Qt.AlignCenter)
-
         self.horizontalLayout.addWidget(self.label_2)
-
         self.minute_spinBox = QSpinBox(self.verticalLayoutWidget_2)
         self.minute_spinBox.setObjectName(u"minute_spinBox")
         self.minute_spinBox.setMaximumSize(QSize(57, 16777215))
         self.minute_spinBox.setRange(0, 59)
-
         self.horizontalLayout.addWidget(self.minute_spinBox)
-
         self.label_3 = QLabel(self.verticalLayoutWidget_2)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setMaximumSize(QSize(45, 16777215))
         self.label_3.setAlignment(Qt.AlignCenter)
-
         self.horizontalLayout.addWidget(self.label_3)
-
         self.second_spinBox = QSpinBox(self.verticalLayoutWidget_2)
         self.second_spinBox.setObjectName(u"second_spinBox")
         self.second_spinBox.setMaximumSize(QSize(57, 16777215))
         self.second_spinBox.setRange(0, 59)
-
         self.horizontalLayout.addWidget(self.second_spinBox)
-
-
         self.verticalLayout_2.addLayout(self.horizontalLayout)
-
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.button_tab2 = QPushButton(self.verticalLayoutWidget_2)
         self.button_tab2.setObjectName(u"button_tab2")
-
         self.horizontalLayout_2.addWidget(self.button_tab2)
-
-
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
-
         self.tabWidget.addTab(self.tab_2, "")
-
         self.retranslateUi(Form)
-
         self.tabWidget.setCurrentIndex(1)
-
-
         QMetaObject.connectSlotsByName(Form)
     # setupUi
 

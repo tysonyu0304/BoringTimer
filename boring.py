@@ -1,3 +1,4 @@
+from fileinput import close
 import sys, webbrowser
 from PySide2.QtCore import *
 from PySide2.QtGui import *
@@ -23,6 +24,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__(None)
         self.ui = Ui_Form()
+        self.sub = SubWindow()
         self.ui.setupUi(self)
         self.ui.text_3.setText("我無聊了 0 秒")
         self.ui.button_3.setText("我現在無聊了")
@@ -30,19 +32,31 @@ class MainWindow(QMainWindow):
         self.ui.counter.setText("0:00:00")
         self.timer_counter = 0
         self.setupControl()
+        self.Timer2_control()
         self.ui.button_3.clicked.connect(self.click)
         self.ui.button2_3.clicked.connect(self.b2)
-        self.ui.button_tab2.clicked.connect(self.Istime)
+        self.ui.button_tab2.clicked.connect(self.start)
         print("RUN")
+        self.timeout = False
+        self.time = 0
+        self.timer2_count = 1
 
     def setupControl(self):
         self.timer = QTimer()
-        self.timer.timeout.connect(self.main)
+        self.timer.timeout.connect(self.main1)
         if On == 1:
             self.timer.start(1000)
         elif On == -1: self.timer.stop()
+        self.timer2 = QTimer()
 
-    def main(self):
+    def Timer2_control(self):
+        self.timer2.start(1000)
+        self.timer2.timeout.connect(self.countdown(self.time))
+        if self.timer2_count >= self.time:
+            self.Istime()
+            self.timer2.stop()
+
+    def main1(self):
         global i
         i = i + 1
         s, m, h = format(i, 0, 0)
@@ -64,14 +78,27 @@ class MainWindow(QMainWindow):
         else: self.ui.button_3.setText("我現在不無聊了")
         On = -On
         self.timer_counter -= 1
-        self.main()
+        self.main1()
 
     def b2(self):
         webbrowser.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
+    def start(self):
+        h = self.ui.hour_spinBox.value()
+        m = self.ui.minute_spinBox.value()
+        s = self.ui.second_spinBox.value()
+        self.time = int(h) * 3600 + int(m) * 60 + int(s)
+        self.timer2_count = 0
+    
+    def countdown(self, time):
+        self.timer2_count += 1
+        time - self.timer2_count
+        s, m, h = format(time, 0, 0)
+        self.ui.counter.setText(f"{h}:{m}:{s}")
+
     def Istime(self):
-        self.sub = SubWindow()
         self.sub.show()
+        self.timeout = True
 
 class SubWindow(QWidget):
     def __init__(self):
@@ -83,6 +110,11 @@ class SubWindow(QWidget):
     def Fun(self):
         webbrowser.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
         self.close()
+       
+    def closeEvent(self, event):
+        MainWindow().timeout = False
+        MainWindow().timer2.stop()
+
 
 if __name__ == "__main__":
     app = QApplication()
